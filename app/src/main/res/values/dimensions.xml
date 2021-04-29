@@ -7,5 +7,6 @@
     <dimen  name ="start_button_margin_top">20dp</dimen>
     <dimen  name ="start_button_label_text_size">22sp</dimen>
     <dimen  name ="timer_text_size">25sp</dimen>
+    <dimen  name ="exercise_text_size">18sp</dimen>
 
 </resources>
