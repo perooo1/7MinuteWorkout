@@ -1,6 +1,6 @@
 package com.plenart.a7minuteworkout
 
-class ExerciseModel(private var id: Int, private var name: String, private var image: Int, private var idCompleted: Boolean, private var isSelected: Boolean) {
+class ExerciseModel(private var id: Int, private var name: String, private var image: Int, private var isCompleted: Boolean, private var isSelected: Boolean) {
 
     fun getId(): Int{
         return this.id;
@@ -10,6 +10,36 @@ class ExerciseModel(private var id: Int, private var name: String, private var i
         this.id = id;
     }
 
+    fun getName(): String{
+        return this.name;
+    }
 
+    fun setName(name:String){
+        this.name = name;
+    }
+
+    fun getImage(): Int{
+        return this.image;
+    }
+
+    fun setImage(image: Int){
+        this.image= image
+    }
+
+    fun getIsCompleted(): Boolean{
+        return this.isCompleted;
+    }
+
+    fun setIsCompleted(isCompleted: Boolean){
+        this.isCompleted = isCompleted;
+    }
+
+    fun getIsSeleceted(): Boolean{
+        return this.isSelected;
+    }
+
+    fun setIsSelected(isSelected: Boolean){
+        this.isSelected = isSelected;
+    }
 
 }

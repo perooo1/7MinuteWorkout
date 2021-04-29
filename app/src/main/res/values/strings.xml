@@ -6,4 +6,5 @@
     <string name="timer_start">10</string>
     <string name="exercise_name">Exercise name</string>
     <string name="progressBarExercise_max">30</string>
+    <string name="upcoming_exercise">UPCOMING EXERCISE:</string>
 </resources>
