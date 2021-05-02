@@ -7,4 +7,12 @@
     <string name="exercise_name">Exercise name</string>
     <string name="progressBarExercise_max">30</string>
     <string name="upcoming_exercise">UPCOMING EXERCISE:</string>
+    <string name="text_end">END</string>
+    <string name="text_congratulations">Congratulations!</string>
+    <string name="text_workout_finished">You have finished the workout!</string>
+    <string name="text_finish">FINISH</string>
+    <string name="txt_conformation_question">Are you sure?</string>
+    <string name="txt_conformation">This will stop your workout. You\'ve come this far,are you sure you want to quit?</string>
+    <string name="text_yes">YES</string>
+    <string name="text_no">NO</string>
 </resources>
