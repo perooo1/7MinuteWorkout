@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/txt_conformation_question"
+        android:textColor="@color/black"
+        android:textSize="@dimen/exercise_text_size"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/conformation_dialog_margin"
+        android:layout_marginTop="@dimen/conformation_dialog_margin"
+        android:layout_marginEnd="@dimen/conformation_dialog_margin"
+        android:gravity="center"
+        android:text="@string/txt_conformation"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/exercise_text_size"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/conformation_dialog_margin"
+        android:orientation="horizontal"
+        >
+
+
+        <Button
+            android:id="@+id/btnConformationYes"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/conformation_dialog_margin"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/text_yes"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            />
+
+
+        <Button
+            android:id="@+id/btnConformationNo"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/conformation_dialog_margin"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/text_no"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

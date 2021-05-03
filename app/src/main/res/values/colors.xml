@@ -8,15 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#B2212121</color>
+    <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#B2212121</color>
     <color name="colorAccent">#008F24</color>
 
     <color name="colorHighlighted">#C4C4C4C4</color>
     <color name="colorCircularProgressBar">#D4DEE7</color>
     <color name="toolbar_color_control_normal">#000000</color>
-
-
-
 
 </resources>

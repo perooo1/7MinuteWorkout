@@ -1,5 +1,7 @@
 package com.plenart.a7minuteworkout
 
+import android.app.Dialog
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +11,9 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_excercise.*
+import kotlinx.android.synthetic.main.dialog_custom_back_conformation.*
 import org.w3c.dom.Text
 import java.lang.Exception
 import java.util.*
@@ -19,15 +23,19 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var restTimer: CountDownTimer? = null;
     private var restProgress = 0;
+    private var restTimerDuration: Long = 10;
 
     private var exerciseTimer: CountDownTimer? = null;
     private var exerciseProgress = 0;
+    private var exerciseTimerDuration: Long = 30;
 
     private var exerciseList: ArrayList<ExerciseModel>?= null;
     private var currentExercisePosition = -1;
 
     private var tts : TextToSpeech? = null;
     private var player: MediaPlayer? = null;
+
+    private var exerciseAdapter : ExerciseStatusAdapter? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,16 +51,17 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         toolbar_exercise_activity.setNavigationOnClickListener {
-            onBackPressed();
+            customDialogForBackButton();
         }
 
         exerciseList = Constants.defaultExerciseList();     //kao static u javi
         setUpRestView();
+        setupExerciseStatusRecyclerView();
     }
 
     private fun setRestProgressBar(){
         progressBar.progress = restProgress;
-        restTimer = object : CountDownTimer(10000,1000){
+        restTimer = object : CountDownTimer(restTimerDuration * 1000,1000){
             override fun onTick(millisUntilFinished: Long) {
                 restProgress++;
                 progressBar.progress = 10- restProgress;
@@ -61,6 +70,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             override fun onFinish() {
                 currentExercisePosition++;
+
+                exerciseList!![currentExercisePosition].setIsSelected(true);
+                exerciseAdapter!!.notifyDataSetChanged();
+
                 setUpExerciseView();
             }
 
@@ -71,7 +84,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun setUpRestView(){
 
         try{
-            //val soundURI = Uri.parse("android:resource://com.plenart.a7minuteworkout/"+ R.raw.press_start)
             player = MediaPlayer.create(applicationContext,R.raw.press_start);
             player!!.isLooping = false;
             player!!.start();
@@ -116,7 +128,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun setExerciseProgressBar(){
         progressBarExercise.progress = exerciseProgress;
-        exerciseTimer = object : CountDownTimer(30000,1000){
+        exerciseTimer = object : CountDownTimer(exerciseTimerDuration*1000,1000){
             override fun onTick(millisUntilFinished: Long) {
                 exerciseProgress++;
                 progressBarExercise.progress = 30- exerciseProgress;
@@ -124,10 +136,17 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
 
             override fun onFinish() {
-                if(currentExercisePosition < exerciseList?.size!! -1)
+                if(currentExercisePosition < exerciseList?.size!! -1){
+                    exerciseList!![currentExercisePosition].setIsSelected(false);
+                    exerciseList!![currentExercisePosition].setIsCompleted(true);
+                    exerciseAdapter!!.notifyDataSetChanged();
                     setUpRestView();
+                }
                 else{
-                    Toast.makeText(this@ExerciseActivity,"Congrats, you completed 7min workout!", Toast.LENGTH_SHORT).show(); //TODO
+                    finish();
+                    val intent = Intent(this@ExerciseActivity, FinishActivity::class.java);
+                    startActivity(intent);
+
                 }
             }
 
@@ -170,6 +189,28 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun speakOut(text:String){
         tts!!.speak(text, TextToSpeech.QUEUE_FLUSH,null,null);
+    }
+
+    private fun setupExerciseStatusRecyclerView(){
+        rvExerciseStatus.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false);
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!, this);
+        rvExerciseStatus.adapter =  exerciseAdapter;
+    }
+
+    private fun customDialogForBackButton(){
+        val customDialog = Dialog(this);
+        customDialog.setContentView(R.layout.dialog_custom_back_conformation);
+        customDialog.btnConformationYes.setOnClickListener {
+            finish();
+            customDialog.dismiss();
+        }
+
+        customDialog.btnConformationNo.setOnClickListener{
+            customDialog.dismiss();
+        }
+
+        customDialog.show();
+
     }
 
 }
