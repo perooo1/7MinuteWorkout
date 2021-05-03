@@ -15,4 +15,17 @@
     <string name="txt_conformation">This will stop your workout. You\'ve come this far,are you sure you want to quit?</string>
     <string name="text_yes">YES</string>
     <string name="text_no">NO</string>
+    <string name="BMI">BMI</string>
+    <string name="calculator">calculator</string>
+    <string name="calculate">CALCULATE BMI</string>
+    <string name="txt_hint_weight_metric">WEIGHT (in kg)</string>
+    <string name="txt_hint_height_metric">HEIGHT (in cm)</string>
+    <string name="txt_yourBMI">Your BMI:</string>
+    <string name="temp">temp</string>
+    <string name="txt_hint_weight_imperial">"WEIGHT (in lbs) "</string>
+    <string name="txt_hint_height_imperial_feet">HEIGHT (feet)</string>
+    <string name="txt_hint_height_imperial_inch">HEIGHT (inches)</string>
+    <string name="history">HISTORY</string>
+    <string name="exercise_completed">EXERCISE COMPLETED</string>
+    <string name="txt_no_data_available">NO DATA AVAILABLE</string>
 </resources>

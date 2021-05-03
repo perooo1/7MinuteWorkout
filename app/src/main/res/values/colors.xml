@@ -16,4 +16,7 @@
     <color name="colorCircularProgressBar">#D4DEE7</color>
     <color name="toolbar_color_control_normal">#000000</color>
 
+    <color name="radio_group_bg">#ECEDEF</color>
+    <color name="radio_group_bg_dark">#9AA2AF</color>
+
 </resources>

@@ -181,7 +181,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
         else{
-            Log.e("TTS","Initialization failed!");
+            Log.e("TTS","lInitialization faied!" + status);
         }
 
     }
